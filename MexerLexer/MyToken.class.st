@@ -19,6 +19,11 @@ MyToken >> = aToken [
 	^ self class = aToken class and: [ value = aToken value ]
 ]
 
+{ #category : #'as yet unclassified' }
+MyToken >> asConstant [
+	^ EConstant value: value
+]
+
 { #category : #accessing }
 MyToken >> end [
 	^ end
@@ -29,11 +34,22 @@ MyToken >> end: anObject [
 	end := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+MyToken >> given: aTokenString [ 
+	^ aTokenString asConstant
+]
+
+{ #category : #printing }
+MyToken >> printInsideOn: aStream [
+	aStream << value asString.
+]
+
 { #category : #printing }
 MyToken >> printOn: aStream [
 	aStream << self className;
-	<< ' (';
-	<< value;
+	<< ' ('.
+	self printInsideOn: aStream.
+	aStream
 	<< ')'.
 ]
 
