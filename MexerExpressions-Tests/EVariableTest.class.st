@@ -1,7 +1,7 @@
 Class {
 	#name : #EVariableTest,
 	#superclass : #TestCase,
-	#category : #MexerExpressions
+	#category : #'MexerExpressions-Tests'
 }
 
 { #category : #tests }

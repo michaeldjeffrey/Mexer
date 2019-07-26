@@ -1,7 +1,7 @@
 Class {
 	#name : #ENegationTest,
 	#superclass : #TestCase,
-	#category : #MexerExpressions
+	#category : #'MexerExpressions-Tests'
 }
 
 { #category : #tests }

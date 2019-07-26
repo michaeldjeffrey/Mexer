@@ -1,7 +1,7 @@
 Class {
 	#name : #EConstantTest,
 	#superclass : #TestCase,
-	#category : #MexerExpressions
+	#category : #'MexerExpressions-Tests'
 }
 
 { #category : #tests }
