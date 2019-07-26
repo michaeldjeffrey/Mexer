@@ -23,6 +23,6 @@ EConstantTest >> testNegated [
 ]
 
 { #category : #tests }
-EConstantTest >> testPrinting [ 
-	self assert: EConstant constant5 printString equals: '5'
+EConstantTest >> testPrinting [
+	self assert: EConstant constant5 printString equals: 'TokenNumber (5)'
 ]

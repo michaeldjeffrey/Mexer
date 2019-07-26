@@ -25,38 +25,43 @@ ParserMathTest >> testDivision [
 { #category : #tests }
 ParserMathTest >> testMultipleAddition [
 	| lexer |
-	lexer := Lexer source: '5 + 3 + 1'.
+	lexer := Lexer source: '5 + 3 + 5'.
 	self
 		assert: (Parser from: lexer allTokens) root
-		equals: (EAddition left: (EAddition left: 5 right: 3) right: 1)
+		equals: (EAddition left: (EAddition fivePlusThree ) right: EConstant constant5)
 ]
 
 { #category : #tests }
 ParserMathTest >> testMultipleDivision [
 	| lexer |
-	lexer := Lexer source: '5 / 3 / 1'.
+	lexer := Lexer source: '5 / 3 / 5'.
 	self
 		assert: (Parser from: lexer allTokens) root
 		equals:
-			(EDivision left: EDivision fiveDividedByThree  right: (EConstant value: 1))
+			(EDivision
+				left: EDivision fiveDividedByThree
+				right: (EConstant constant5))
 ]
 
 { #category : #tests }
 ParserMathTest >> testMultipleMultiplication [
 	| lexer |
-	lexer := Lexer source: '5 * 3 * 1'.
+	lexer := Lexer source: '5 * 3 * 5'.
 	self
 		assert: (Parser from: lexer allTokens) root
-		equals: (EMultiplication left: EMultiplication fiveTimesThree right: (EConstant value: 1))
+		equals:
+			(EMultiplication
+				left: EMultiplication fiveTimesThree
+				right: (EConstant constant5))
 ]
 
 { #category : #tests }
 ParserMathTest >> testMultipleSubtraction [
 	| lexer |
-	lexer := Lexer source: '5 - 3 - 1'.
+	lexer := Lexer source: '5 - 3 - 5'.
 	self
 		assert: (Parser from: lexer allTokens) root
-		equals: (ESubtraction left: (ESubtraction left: 5 right: 3) right: 1)
+		equals: (ESubtraction left: (ESubtraction fiveMinusThree ) right: EConstant constant5)
 ]
 
 { #category : #tests }
@@ -71,10 +76,13 @@ ParserMathTest >> testMultiplication [
 { #category : #tests }
 ParserMathTest >> testMultiplicationAndAddition [
 	| lexer |
-	lexer := Lexer source: '5 * 3 + 1'.
+	lexer := Lexer source: '5 * 3 + 5'.
 	self
 		assert: (Parser from: lexer allTokens) root
-		equals: (EAddition left: EMultiplication fiveTimesThree right: (EConstant value: 1))
+		equals:
+			(EAddition
+				left: EMultiplication fiveTimesThree
+				right: (EConstant constant5))
 ]
 
 { #category : #tests }

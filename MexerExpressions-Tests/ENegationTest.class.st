@@ -25,5 +25,5 @@ ENegationTest >> testNegationNegated [
 
 { #category : #tests }
 ENegationTest >> testPrinting [
-	self assert: EConstant constant5 negated printString equals: '- 5'
+	self assert: EConstant constant5 negated printString equals: '- TokenNumber (5)'
 ]

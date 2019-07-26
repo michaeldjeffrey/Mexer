@@ -34,6 +34,10 @@ EMultiplicationTest >> testNegated [
 
 { #category : #tests }
 EMultiplicationTest >> testPrinting [
-	self assert: EMultiplication fiveTimesThree printString equals: '( 5 * 3 )'.
-	self assert: EMultiplication fiveTimesThree negated printString equals: '- ( 5 * 3 )'
+	self
+		assert: EMultiplication fiveTimesThree printString
+		equals: '( TokenNumber (5) * TokenNumber (3) )'.
+	self
+		assert: EMultiplication fiveTimesThree negated printString
+		equals: '- ( TokenNumber (5) * TokenNumber (3) )'
 ]

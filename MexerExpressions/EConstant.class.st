@@ -9,17 +9,22 @@ Class {
 
 { #category : #'as yet unclassified' }
 EConstant class >> constant3 [
-	^ self new value: 3
+	<sampleInstance>
+	^ self new value: (TokenNumber value: 3)
 ]
 
 { #category : #'as yet unclassified' }
 EConstant class >> constant5 [
-	^ self new value: 5
+	<sampleInstance>
+	^ self new
+		value: (TokenNumber value: 5);
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
 EConstant class >> fourtyTwo [
-	^ self new value: 42
+	<sampleInstance>
+	^ self new value: (TokenNumber value: 42)
 ]
 
 { #category : #'instance creation' }
@@ -29,7 +34,8 @@ EConstant class >> of: aValue [
 
 { #category : #accessing }
 EConstant class >> string [
-	^ self new value: '"string"'
+	<sampleInstance>
+	^ self new value: (TokenString value: '"string"')
 ]
 
 { #category : #'as yet unclassified' }
@@ -44,12 +50,17 @@ EConstant >> evaluate [
 
 { #category : #'as yet unclassified' }
 EConstant >> evaluateWith: anObject [
-	^ value
+	^ value value
 ]
 
 { #category : #'as yet unclassified' }
 EConstant >> given: aTokenSymbol [ 
 	^ aTokenSymbol givenConstant: self
+]
+
+{ #category : #'as yet unclassified' }
+EConstant >> givenAssignment: anEAssignment [ 
+	^ value givenAssignment: anEAssignment 
 ]
 
 { #category : #'as yet unclassified' }

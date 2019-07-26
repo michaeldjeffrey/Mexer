@@ -21,7 +21,7 @@ MyToken >> = aToken [
 
 { #category : #'as yet unclassified' }
 MyToken >> asConstant [
-	^ EConstant value: value
+	^ EConstant value: self
 ]
 
 { #category : #accessing }
