@@ -4,6 +4,17 @@ Class {
 	#category : #'MexerLexer-Tokens'
 }
 
+{ #category : #converting }
+TokenString >> asStarter [
+	^ self asConstant 
+]
+
+{ #category : #'as yet unclassified' }
+TokenString >> givenAssignment: anEAssignment [ 
+	anEAssignment value: self asConstant .
+	^ anEAssignment 
+]
+
 { #category : #printing }
 TokenString >> printInsideOn: aStream [
 	aStream << value asString

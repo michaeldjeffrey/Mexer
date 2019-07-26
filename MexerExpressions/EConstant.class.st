@@ -52,6 +52,12 @@ EConstant >> given: aTokenSymbol [
 	^ aTokenSymbol givenConstant: self
 ]
 
+{ #category : #'as yet unclassified' }
+EConstant >> givenSymbol: aTokenSymbol [
+	"We know symbols handle constant already"
+	^ aTokenSymbol givenConstant: self
+]
+
 { #category : #printing }
 EConstant >> printOn: aStream [
 	aStream print: value

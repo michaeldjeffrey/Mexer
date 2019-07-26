@@ -35,8 +35,8 @@ MyToken >> end: anObject [
 ]
 
 { #category : #'as yet unclassified' }
-MyToken >> given: aTokenString [ 
-	^ aTokenString asConstant
+MyToken >> given: aToken [
+	^ aToken asStarter.
 ]
 
 { #category : #printing }

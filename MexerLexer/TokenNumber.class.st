@@ -10,8 +10,26 @@ TokenNumber class >> start: anInteger [
 ]
 
 { #category : #'as yet unclassified' }
+TokenNumber >> asStarter [
+	^ self asConstant 
+]
+
+{ #category : #'as yet unclassified' }
+TokenNumber >> given: aToken [
+	^ aToken givenNumber: self
+]
+
+{ #category : #'as yet unclassified' }
 TokenNumber >> givenAddition: anEAddition [
 	^ self setRightSideOf: anEAddition.
+]
+
+{ #category : #'as yet unclassified' }
+TokenNumber >> givenAssignment: anEAssignment [
+	anEAssignment value
+		ifNil: [ anEAssignment value: self ] 
+		ifNotNil: [ anEAssignment value: (anEAssignment value given: self) ].
+	^ anEAssignment
 ]
 
 { #category : #'as yet unclassified' }
@@ -28,6 +46,11 @@ TokenNumber >> givenMultiplication: anEMultiplication [
 { #category : #'as yet unclassified' }
 TokenNumber >> givenSubtraction: anESubtraction [
 	^ self setRightSideOf: anESubtraction
+]
+
+{ #category : #'as yet unclassified' }
+TokenNumber >> givenSymbol: aTokenSymbol [ 
+	^ aTokenSymbol givenConstant: self asConstant 
 ]
 
 { #category : #initialization }

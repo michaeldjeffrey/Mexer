@@ -5,8 +5,13 @@ Class {
 }
 
 { #category : #accessing }
-TokenKeyword class >> keywords [ 	
-	^ #('var' 'function' 'return')
+TokenKeyword class >> keywords [
+	^ #('var' 'const' 'let' 'function' 'return')
+]
+
+{ #category : #converting }
+TokenKeyword >> asStarter [
+	^ EAssignment new type: self
 ]
 
 { #category : #accessing }

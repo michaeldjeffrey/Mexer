@@ -86,6 +86,16 @@ TokenSymbol >> givenAddition: anEAddition [
 ]
 
 { #category : #'as yet unclassified' }
+TokenSymbol >> givenAssignment: anEAssignment [
+	"Assignments are expected to happen with = symbols. 
+	We'll handle other symbols on the right hand side in the future."
+
+	anEAssignment value
+		ifNotNil: [ anEAssignment value: (anEAssignment value givenSymbol: self) ].
+	^ anEAssignment
+]
+
+{ #category : #'as yet unclassified' }
 TokenSymbol >> givenConstant: anEConstant [
 	^ self givenExpression: anEConstant 
 ]
