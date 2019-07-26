@@ -8,6 +8,11 @@ Class {
 	#category : #MexerExpressions
 }
 
+{ #category : #'as yet unclassified' }
+EBinaryExpression class >> left: anExpression right: anExpression2 [
+	^ self new left: anExpression; right: anExpression2; yourself
+]
+
 { #category : #accessing }
 EBinaryExpression >> left: anExpression [
 	left := anExpression

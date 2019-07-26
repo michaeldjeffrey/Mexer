@@ -109,14 +109,17 @@ Lexer >> parseStringToken [
 Lexer >> parseSymbolToken [
 	| thing tokenStart value |
 	tokenStart := index.
-	thing := self 
+	thing := self
 		collectFromSource: [ TokenSymbol symbols includes: self currentToken asString ]
 		into: OrderedCollection new.
 	value := self valueFrom: thing.
-	value isEmpty ifTrue: [ EmptySymbolError signal: 'Symbol cannot be empty' ].
-	^ TokenSymbol new value: value;
+	value isEmpty
+		ifTrue: [ EmptySymbolError
+				signal: 'Symbol cannot be empty: ' , self currentToken asString ].
+	^ TokenSymbol new
+		value: value;
 		start: tokenStart;
-		end: tokenStart + thing size - 1.
+		end: tokenStart + thing size - 1
 ]
 
 { #category : #accessing }

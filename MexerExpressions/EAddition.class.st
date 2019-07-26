@@ -14,14 +14,6 @@ EAddition class >> fivePlusThree [
 ]
 
 { #category : #'as yet unclassified' }
-EAddition class >> left: anExpression right: anExpression2 [
-	^ self new
-		left: anExpression;
-		right: anExpression2;
-		yourself
-]
-
-{ #category : #'as yet unclassified' }
 EAddition >> evaluateWith: anObject [
 	^ (left evaluateWith: anObject) + (right evaluateWith: anObject)
 ]

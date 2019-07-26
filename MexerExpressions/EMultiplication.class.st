@@ -6,12 +6,11 @@ Class {
 
 { #category : #'as yet unclassified' }
 EMultiplication class >> fiveTimesThree [
-	^ self new left: EConstant constant5; right: EConstant constant3; yourself
-]
-
-{ #category : #'as yet unclassified' }
-EMultiplication class >> left: anExpression right: anExpression2 [
-	^ self new left: anExpression; right: anExpression2; yourself
+	<sampleInstance>
+	^ self new
+		left: EConstant constant5;
+		right: EConstant constant3;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }

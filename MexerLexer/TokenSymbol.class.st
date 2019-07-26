@@ -10,6 +10,11 @@ TokenSymbol class >> comma [
 ]
 
 { #category : #'as yet unclassified' }
+TokenSymbol class >> divide [
+	^ self new value: '/'
+]
+
+{ #category : #'as yet unclassified' }
 TokenSymbol class >> leftCurly [
 	^ self new value: '{'
 ]
@@ -22,6 +27,11 @@ TokenSymbol class >> leftParen [
 { #category : #'as yet unclassified' }
 TokenSymbol class >> leftSquare [
 	^ self new value: '['
+]
+
+{ #category : #accessing }
+TokenSymbol class >> minus [
+	^ self new value: '-'
 ]
 
 { #category : #modes }
@@ -56,12 +66,17 @@ TokenSymbol class >> semiColon [
 
 { #category : #'as yet unclassified' }
 TokenSymbol class >> symbols [
-	^ #('=' '+' '*' '(' ')' ',' ';' '{' '}' '[' ']')
+	^ #('=' '+' '*' '-' '/' '(' ')' ',' ';' '{' '}' '[' ']')
 ]
 
 { #category : #'as yet unclassified' }
 TokenSymbol >> classForSymbol [
-	self isAddition ifTrue: [ ^ EAddition  ].
+	self isAddition
+		ifTrue: [ ^ EAddition ].
+	self isSubtraction
+		ifTrue: [ ^ ESubtraction ].
+	self isDivision 
+	ifTrue: [ ^ EDivision  ].
 	^ EMultiplication
 ]
 
@@ -76,6 +91,11 @@ TokenSymbol >> givenConstant: anEConstant [
 ]
 
 { #category : #'as yet unclassified' }
+TokenSymbol >> givenDivision: anEDivision [ 
+	^ self givenExpression: anEDivision 
+]
+
+{ #category : #'as yet unclassified' }
 TokenSymbol >> givenExpression: anExpression [
 	^ self classForSymbol new
 		left: anExpression;
@@ -87,7 +107,22 @@ TokenSymbol >> givenMultiplication: anEMultiplication [
 	^ self givenExpression: anEMultiplication.
 ]
 
+{ #category : #'as yet unclassified' }
+TokenSymbol >> givenSubtraction: anESubtraction [ 
+	^ self givenExpression: anESubtraction 
+]
+
 { #category : #testing }
 TokenSymbol >> isAddition [
 	^ value = '+'
+]
+
+{ #category : #testing }
+TokenSymbol >> isDivision [
+	^ value = '/'
+]
+
+{ #category : #testing }
+TokenSymbol >> isSubtraction [
+	^ value = '-'
 ]
