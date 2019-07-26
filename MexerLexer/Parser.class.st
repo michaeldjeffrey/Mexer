@@ -2,9 +2,7 @@ Class {
 	#name : #Parser,
 	#superclass : #Object,
 	#instVars : [
-		'tokens',
-		'stack',
-		'isParsed'
+		'tokens'
 	],
 	#category : #MexerLexer
 }
@@ -17,17 +15,6 @@ Parser class >> from: aCollectionOfTokens [
 { #category : #'as yet unclassified' }
 Parser >> expression [
 	^ EConstant new value: tokens first value
-]
-
-{ #category : #initialization }
-Parser >> initialize [ 
-	isParsed := false.
-	stack := OrderedCollection new.
-]
-
-{ #category : #accessing }
-Parser >> isParsed [
-	^ isParsed
 ]
 
 { #category : #parsing }
