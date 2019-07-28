@@ -49,7 +49,8 @@ EObject >> given: aToken [
 
 { #category : #initialization }
 EObject >> initialize [
-	expressions := OrderedDictionary  new
+	super initialize .
+	expressions := OrderedDictionary new
 ]
 
 { #category : #'as yet unclassified' }

@@ -15,3 +15,8 @@ TokenName >> givenObject: anEObject [
 	anEObject waitingKey: self.
 	^ anEObject 
 ]
+
+{ #category : #accessing }
+TokenName >> value [ 
+	^ value
+]
