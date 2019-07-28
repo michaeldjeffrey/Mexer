@@ -4,6 +4,11 @@ Class {
 	#category : #MexerExpressions
 }
 
+{ #category : #'as yet unclassified' }
+ENamedFunction >> given: aToken [
+	^ aToken givenNamedFunction: self
+]
+
 { #category : #testing }
 ENamedFunction >> isAnonymous [ 
 	^ false

@@ -126,8 +126,27 @@ TokenSymbol >> givenExpression: anExpression [
 ]
 
 { #category : #'as yet unclassified' }
+TokenSymbol >> givenFunctionBody: anEFunctionBody [
+	"End of body"
+
+	value = '}'
+		ifTrue: [ ^ anEFunctionBody declaration ].
+	self shouldBeImplemented
+]
+
+{ #category : #'as yet unclassified' }
 TokenSymbol >> givenMultiplication: anEMultiplication [
 	^ self givenExpression: anEMultiplication.
+]
+
+{ #category : #'as yet unclassified' }
+TokenSymbol >> givenNamedFunction: anENamedFunction [ 
+	"No arguments"
+	value = '()' ifTrue: [ ^ anENamedFunction ].
+	"Start of body"
+	value = '{' ifTrue: [ ^ anENamedFunction expressions ].
+	"End of body"
+	self shouldBeImplemented 
 ]
 
 { #category : #'as yet unclassified' }

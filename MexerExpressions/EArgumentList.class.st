@@ -2,7 +2,8 @@ Class {
 	#name : #EArgumentList,
 	#superclass : #EExpression,
 	#instVars : [
-		'arguments'
+		'arguments',
+		'declaration'
 	],
 	#category : #MexerExpressions
 }
@@ -15,6 +16,11 @@ EArgumentList >> add: aTokenName [
 { #category : #accessing }
 EArgumentList >> arguments [ 
 	^ arguments
+]
+
+{ #category : #'as yet unclassified' }
+EArgumentList >> declaration: anEFunction [ 
+	declaration := anEFunction
 ]
 
 { #category : #initialization }

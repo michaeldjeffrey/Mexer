@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'name',
 		'expressions',
-		'argumentList'
+		'argumentList',
+		'declaration'
 	],
 	#category : #MexerExpressions
 }
@@ -36,11 +37,18 @@ EFunction >> expressions [
 	^ expressions
 ]
 
+{ #category : #'as yet unclassified' }
+EFunction >> fromDeclaration: aTokenKeyword [ 
+	declaration := aTokenKeyword 
+]
+
 { #category : #initialization }
 EFunction >> initialize [
 	super initialize.
-	argumentList := EArgumentList new.
-	expressions := EFunctionBody new.
+	argumentList := EArgumentList new declaration: self; yourself.
+	expressions := EFunctionBody new
+		declaration: self;
+		yourself
 ]
 
 { #category : #testing }

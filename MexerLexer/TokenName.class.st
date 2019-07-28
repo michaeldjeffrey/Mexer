@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+TokenName >> givenAnonymousFunction: anEAnonymousFunction [ 
+	^ anEAnonymousFunction named: self
+]
+
+{ #category : #'as yet unclassified' }
 TokenName >> givenAssignment: anEAssignment [ 
 	anEAssignment id: self.
 	^ anEAssignment 

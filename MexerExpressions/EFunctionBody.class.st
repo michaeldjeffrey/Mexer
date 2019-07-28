@@ -2,7 +2,8 @@ Class {
 	#name : #EFunctionBody,
 	#superclass : #EExpression,
 	#instVars : [
-		'expressions'
+		'expressions',
+		'declaration'
 	],
 	#category : #MexerExpressions
 }
@@ -13,8 +14,23 @@ EFunctionBody >> add: anEAddition [
 ]
 
 { #category : #'as yet unclassified' }
+EFunctionBody >> declaration [
+	^ declaration
+]
+
+{ #category : #accessing }
+EFunctionBody >> declaration: anEFunction [
+	declaration := anEFunction 
+]
+
+{ #category : #'as yet unclassified' }
 EFunctionBody >> expressions [
 	^ expressions
+]
+
+{ #category : #'as yet unclassified' }
+EFunctionBody >> given: aTokenSymbol [ 
+	^ aTokenSymbol givenFunctionBody: self
 ]
 
 { #category : #initialization }

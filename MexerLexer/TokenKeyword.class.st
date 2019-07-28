@@ -11,6 +11,7 @@ TokenKeyword class >> keywords [
 
 { #category : #converting }
 TokenKeyword >> asStarter [
+	value = #function ifTrue: [ ^ EFunction anonymous fromDeclaration: self; yourself ].
 	^ EAssignment new type: self
 ]
 
