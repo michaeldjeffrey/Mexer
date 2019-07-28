@@ -15,6 +15,12 @@ TokenString >> givenAssignment: anEAssignment [
 	^ anEAssignment 
 ]
 
+{ #category : #'as yet unclassified' }
+TokenString >> givenObject: anEObject [
+	anEObject put: self.
+	^ anEObject 
+]
+
 { #category : #printing }
 TokenString >> printInsideOn: aStream [
 	aStream << value asString

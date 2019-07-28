@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+TokenSymbol class >> colon [
+	^ self new value: ':'
+]
+
+{ #category : #'as yet unclassified' }
 TokenSymbol class >> comma [
 	^ self new value: ','
 ]
@@ -66,7 +71,15 @@ TokenSymbol class >> semiColon [
 
 { #category : #'as yet unclassified' }
 TokenSymbol class >> symbols [
-	^ #('=' '+' '*' '-' '/' '(' ')' ',' ';' '{' '}' '[' ']')
+	^ #('=' '+' '*' '-' '/' '(' ')' ',' ';' '{' '}' '[' ']' ':')
+]
+
+{ #category : #'as yet unclassified' }
+TokenSymbol >> asStarter [
+	value first = ${
+		ifTrue: [ ^ EObject empty ].
+	UnhandledSymbolAsStarterError
+		signal: 'Do not know how to start with' , value
 ]
 
 { #category : #'as yet unclassified' }
@@ -115,6 +128,26 @@ TokenSymbol >> givenExpression: anExpression [
 { #category : #'as yet unclassified' }
 TokenSymbol >> givenMultiplication: anEMultiplication [
 	^ self givenExpression: anEMultiplication.
+]
+
+{ #category : #'as yet unclassified' }
+TokenSymbol >> givenObject: anEObject [
+	value = ':'
+		ifTrue: [ ^ anEObject ].
+	"Start of an object"
+	value = '{'
+		ifTrue: [ ^ EObject withParent: anEObject ].
+	"End of an object"
+	value = '}'
+		ifTrue: [ ^ anEObject parent ].
+	"End of pair, Should we do something here?"
+	value = ','
+		ifTrue: [ ^ anEObject ].
+	"An Empty nested object."
+	value = '{}'
+		ifTrue: [ anEObject put: EObject empty.
+			^ anEObject ].
+	self shouldBeImplemented
 ]
 
 { #category : #'as yet unclassified' }

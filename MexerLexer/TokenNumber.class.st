@@ -44,6 +44,12 @@ TokenNumber >> givenMultiplication: anEMultiplication [
 ]
 
 { #category : #'as yet unclassified' }
+TokenNumber >> givenObject: anEObject [ 
+	anEObject put: self.
+	^ anEObject 
+]
+
+{ #category : #'as yet unclassified' }
 TokenNumber >> givenSubtraction: anESubtraction [
 	^ self setRightSideOf: anESubtraction
 ]

@@ -9,3 +9,9 @@ TokenName >> givenAssignment: anEAssignment [
 	anEAssignment id: self.
 	^ anEAssignment 
 ]
+
+{ #category : #'as yet unclassified' }
+TokenName >> givenObject: anEObject [
+	anEObject waitingKey: self.
+	^ anEObject 
+]
