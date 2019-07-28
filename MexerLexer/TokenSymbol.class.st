@@ -99,6 +99,15 @@ TokenSymbol >> givenAddition: anEAddition [
 ]
 
 { #category : #'as yet unclassified' }
+TokenSymbol >> givenArgumentList: anEArgumentList [ 
+	"End of arguments"
+	value = ')' ifTrue: [ ^ anEArgumentList declaration ].
+	"More arguments, eat"
+	value = ',' ifTrue: [ ^ anEArgumentList ].
+	self shouldBeImplemented.
+]
+
+{ #category : #'as yet unclassified' }
 TokenSymbol >> givenAssignment: anEAssignment [
 	"Assignments are expected to happen with = symbols. 
 	We'll handle other symbols on the right hand side in the future."
@@ -143,6 +152,8 @@ TokenSymbol >> givenMultiplication: anEMultiplication [
 TokenSymbol >> givenNamedFunction: anENamedFunction [ 
 	"No arguments"
 	value = '()' ifTrue: [ ^ anENamedFunction ].
+	"Start of argument list"
+	value = '(' ifTrue: [ ^ anENamedFunction arguments ].
 	"Start of body"
 	value = '{' ifTrue: [ ^ anENamedFunction expressions ].
 	"End of body"

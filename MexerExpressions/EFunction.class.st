@@ -33,6 +33,11 @@ EFunction >> addExpression: anEExpression [
 ]
 
 { #category : #'as yet unclassified' }
+EFunction >> arguments [
+	^ argumentList 
+]
+
+{ #category : #'as yet unclassified' }
 EFunction >> expressions [
 	^ expressions
 ]

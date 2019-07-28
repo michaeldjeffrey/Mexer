@@ -10,6 +10,12 @@ TokenName >> givenAnonymousFunction: anEAnonymousFunction [
 ]
 
 { #category : #'as yet unclassified' }
+TokenName >> givenArgumentList: anEArgumentList [
+	anEArgumentList add: self.
+	^ anEArgumentList 
+]
+
+{ #category : #'as yet unclassified' }
 TokenName >> givenAssignment: anEAssignment [ 
 	anEAssignment id: self.
 	^ anEAssignment 

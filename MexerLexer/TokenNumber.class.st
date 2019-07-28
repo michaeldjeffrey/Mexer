@@ -38,6 +38,12 @@ TokenNumber >> givenDivision: anEDivision [
 ]
 
 { #category : #'as yet unclassified' }
+TokenNumber >> givenFunctionBody: anEFunctionBody [ 
+	anEFunctionBody add: self.
+	^ anEFunctionBody 
+]
+
+{ #category : #'as yet unclassified' }
 TokenNumber >> givenMultiplication: anEMultiplication [
 	^ self setRightSideOf: anEMultiplication 
 	

@@ -19,8 +19,18 @@ EArgumentList >> arguments [
 ]
 
 { #category : #'as yet unclassified' }
+EArgumentList >> declaration [
+	^ declaration
+]
+
+{ #category : #'as yet unclassified' }
 EArgumentList >> declaration: anEFunction [ 
 	declaration := anEFunction
+]
+
+{ #category : #'as yet unclassified' }
+EArgumentList >> given: aToken [
+	^ aToken givenArgumentList: self
 ]
 
 { #category : #initialization }
