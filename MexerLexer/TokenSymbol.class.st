@@ -140,7 +140,10 @@ TokenSymbol >> givenFunctionBody: anEFunctionBody [
 
 	value = '}'
 		ifTrue: [ ^ anEFunctionBody declaration ].
-	self shouldBeImplemented
+	value = ';'
+		ifTrue: [ ^ anEFunctionBody terminateExpression ].
+	anEFunctionBody giveToInner: self.
+	^ anEFunctionBody
 ]
 
 { #category : #'as yet unclassified' }
@@ -193,6 +196,11 @@ TokenSymbol >> isAddition [
 { #category : #testing }
 TokenSymbol >> isDivision [
 	^ value = '/'
+]
+
+{ #category : #testing }
+TokenSymbol >> isRightCurly [
+	^ value = '}'
 ]
 
 { #category : #testing }

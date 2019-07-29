@@ -5,11 +5,6 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-TokenNumber class >> start: anInteger [ 
-	self shouldBeImplemented.
-]
-
-{ #category : #'as yet unclassified' }
 TokenNumber >> asStarter [
 	^ self asConstant 
 ]
@@ -39,7 +34,7 @@ TokenNumber >> givenDivision: anEDivision [
 
 { #category : #'as yet unclassified' }
 TokenNumber >> givenFunctionBody: anEFunctionBody [ 
-	anEFunctionBody add: self.
+	anEFunctionBody giveToInner: self.
 	^ anEFunctionBody 
 ]
 

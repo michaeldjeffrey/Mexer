@@ -39,6 +39,11 @@ MyToken >> given: aToken [
 	^ aToken asStarter.
 ]
 
+{ #category : #'as yet unclassified' }
+MyToken >> isRightCurly [
+	^ false
+]
+
 { #category : #printing }
 MyToken >> printInsideOn: aStream [
 	aStream << value asString.

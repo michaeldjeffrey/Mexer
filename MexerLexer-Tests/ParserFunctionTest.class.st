@@ -27,7 +27,7 @@ ParserFunctionTest >> testFunctionDeclarationWithArgument [
 { #category : #tests }
 ParserFunctionTest >> testFunctionDeclarationWithExpression [
 	| lexer func |
-	lexer := Lexer source: 'function name () { 5 + 3 }'.
+	lexer := Lexer source: 'function name () { 5 + 3; }'.
 	func := EFunction named: 'name'.
 	func addExpression: EAddition fivePlusThree.
 	self assert: (Parser from: lexer allTokens) root equals: func

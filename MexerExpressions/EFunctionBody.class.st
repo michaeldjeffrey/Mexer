@@ -2,15 +2,21 @@ Class {
 	#name : #EFunctionBody,
 	#superclass : #EExpression,
 	#instVars : [
-		'expressions',
-		'declaration'
+		'declaration',
+		'terminatedExpressions',
+		'currentExpression'
 	],
 	#category : #MexerExpressions
 }
 
 { #category : #'as yet unclassified' }
-EFunctionBody >> add: anEAddition [ 
-	expressions add: anEAddition 
+EFunctionBody >> add: anEAddition [
+	terminatedExpressions add: anEAddition
+]
+
+{ #category : #'as yet unclassified' }
+EFunctionBody >> currentExpression: anEAddition [ 
+	currentExpression := anEAddition
 ]
 
 { #category : #'as yet unclassified' }
@@ -24,32 +30,48 @@ EFunctionBody >> declaration: anEFunction [
 ]
 
 { #category : #'as yet unclassified' }
-EFunctionBody >> expressions [
-	^ expressions
+EFunctionBody >> giveToInner: aToken [
+	currentExpression := currentExpression given: aToken.
 ]
 
 { #category : #'as yet unclassified' }
-EFunctionBody >> given: aTokenSymbol [ 
-	^ aTokenSymbol givenFunctionBody: self
+EFunctionBody >> given: aToken [
+	aToken isRightCurly
+		ifTrue: [ ^ declaration ].
+	currentExpression ifNil: [ currentExpression := aToken asStarter ] ifNotNil: [ aToken givenFunctionBody: self ].
+	
 ]
 
 { #category : #initialization }
-EFunctionBody >> initialize [ 
-	super initialize .
-	expressions := OrderedCollection new.
+EFunctionBody >> initialize [
+	super initialize.
+	currentExpression := nil.
+	terminatedExpressions := OrderedCollection new
 ]
 
 { #category : #printing }
 EFunctionBody >> printOn: aStream [
 	aStream nextPutAll: '{'.
-	expressions isEmpty
+	terminatedExpressions isEmpty
 		ifFalse: [ aStream crlf ].
-	expressions
+	terminatedExpressions
 		do: [ :expr | 
 			aStream
-			tab;
+				tab;
 				print: expr;
 				nextPutAll: ';';
 				crlf ].
+	currentExpression ifNotNil: [ aStream print: currentExpression  ].
 	aStream nextPutAll: '}'
+]
+
+{ #category : #accessing }
+EFunctionBody >> size [
+	^ terminatedExpressions size + (currentExpression ifNil: [ 0 ] ifNotNil: [ 1 ])
+]
+
+{ #category : #'as yet unclassified' }
+EFunctionBody >> terminateExpression [
+	terminatedExpressions add: currentExpression.
+	currentExpression := nil
 ]
